@@ -19,7 +19,6 @@ function showComparison() {
         .then(data => {
             console.log('API Response:', data);
 
-            // Dynamically set prices and domain labels
             const price1 = data.url1_price !== null && data.url1_price !== undefined ? data.url1_price : 'Unavailable';
             const price2 = data.url2_price !== null && data.url2_price !== undefined ? data.url2_price : 'Unavailable';
 
@@ -28,16 +27,18 @@ function showComparison() {
 
             const productDetails = document.getElementById('productDetails');
             productDetails.innerHTML = `
-               <div class="product-info">
-    <h5 class="domain">${domain1}</h5>
-    <h5 class="price">Price: ₹${price1}</h5>
-</div>
-<div class="product-info">
-    <h5 class="domain">${domain2}</h5>
-    <h5 class="price">Price: ₹${price2}</h5>
-</div>
-
+                <div class="product-info">
+                    <h5 class="domain">${domain1}</h5>
+                    <p class="price">Price: ₹${price1}</p>
+                </div>
+                <div class="product-info">
+                    <h5 class="domain">${domain2}</h5>
+                    <p class="price">Price: ₹${price2}</p>
+                </div>
             `;
+
+            // Optional: Add some transition or animation for smoother display
+            productDetails.style.display = 'block';
         })
         .catch(error => {
             console.error('Error:', error);
@@ -48,3 +49,4 @@ function showComparison() {
         alert("Please enter both URLs!");
     }
 }
+
